@@ -3,7 +3,6 @@ import json
 import datetime
 import requests
 from collections import defaultdict
-
 app = FastAPI()
 
 class Scrape:
@@ -58,7 +57,7 @@ class Scrape:
 
 
 @app.post('/oil_history')
-async def stock(request: Request):
+async def oil_history(request: Request):
     try:
         request_data = await request.json()
         result = Scrape(request_data).get_result()
