@@ -65,3 +65,7 @@ async def stock(request: Request):
         return Response(content=json.dumps(result), media_type="application/json")
     except Exception as e:
         return Response(content=json.dumps({"error_msg": str(e)}), media_type='application/json')
+
+if __name__=='__main__':
+    import uvicorn
+    uvicorn.run(app)
