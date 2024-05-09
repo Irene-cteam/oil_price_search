@@ -34,13 +34,16 @@ class Scrape:
             raise Exception(f"Request failed: {e}")
 
     def _process_data(self, data):
-        result = defaultdict(list)
+        result = {'result':[]}
         data = data.get('data', {}).get('gasoline', [])
         for item in data:
-            date_key = item['Date'].replace('/', '-')
-            result[date_key].append({
-                'cpc': self._get_fuel_prices(item, 'A'),
-                'fpcc': self._get_fuel_prices(item, 'B')
+            date = item['Date'].replace('/', '-')
+            result['result'].append({
+                'date':date,
+                'oil':{
+                    'cpc': self._get_fuel_prices(item, 'A'),
+                    'fpcc': self._get_fuel_prices(item, 'B')
+                }
             })
         return result
 
