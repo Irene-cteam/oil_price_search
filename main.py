@@ -21,8 +21,6 @@ class Scrape:
         return "init"
 
 
-
-
     def get_result(self):
         files = {'start': self.start, 'end': self.end}
         try:
@@ -32,6 +30,13 @@ class Scrape:
             return result
         except requests.RequestException as e:
             raise Exception(f"Request failed: {e}")
+
+
+
+
+
+
+
 
     def _process_data(self, data):
         result = {'result':[]}
